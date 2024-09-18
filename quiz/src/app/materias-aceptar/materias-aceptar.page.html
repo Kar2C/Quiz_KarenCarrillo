@@ -1,0 +1,34 @@
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Materias Inscritas</ion-title>
+    </ion-toolbar>
+    <ion-content>
+      <ion-button [routerLink]="['/home']">
+        Volver al inicio
+      </ion-button>
+    </ion-content>
+  </ion-header>
+</ion-menu>
+
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Materias Inscritas</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content>
+  <ion-card *ngFor="let materia of materias">
+    <ion-card-content>
+      <p>Semestre: {{ materia.semestre }}</p>
+      <p>Código: {{ materia.codigo }}</p>
+      <p>Horario: {{ materia.horario }}</p>
+      <p>Observaciones: {{ materia.observaciones }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

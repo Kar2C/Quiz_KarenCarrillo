@@ -1,0 +1,22 @@
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-menu>
+
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Inicio</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content>
+  <ion-button [routerLink]="['/agregar']">Agregar</ion-button>
+</ion-content>
