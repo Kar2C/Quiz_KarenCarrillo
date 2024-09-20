@@ -26,11 +26,10 @@
   </ion-content>
 </ion-menu>
 
-
 <div id="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Inicio</ion-title>
+      <ion-title>Detalles por materia</ion-title>
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -39,5 +38,19 @@
 </div>
 
 <ion-content>
-  <ion-button [routerLink]="['/agregar']">Agregar</ion-button>
+  <ion-card *ngIf="materiaSeleccionada">
+    <ion-card-header>
+      <ion-card-title>{{ materiaSeleccionada.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Semestre:</strong> {{ materiaSeleccionada.semestre }}</p>
+      <p><strong>Código:</strong> {{ materiaSeleccionada.codigo }}</p>
+      <p><strong>Horario:</strong> {{ materiaSeleccionada.horario }}</p>
+      <p><strong>Observaciones:</strong> {{ materiaSeleccionada.observaciones || 'No hay ninguna observación' }}</p>
+    </ion-card-content>
+
+    <ion-button (click)="modificarMateria()">Modificar Materia</ion-button>
+    <ion-button>Eliminar Materia</ion-button>
+    <ion-button>Agregar Notas</ion-button>
+  </ion-card>
 </ion-content>

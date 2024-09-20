@@ -1,14 +1,29 @@
 <ion-menu side="end" contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Materias</ion-title>
+      <ion-title>Menú</ion-title>
     </ion-toolbar>
-    <ion-content>
-      <ion-button [routerLink]="['/home']">
-        Volver al inicio
-      </ion-button>
-    </ion-content>
   </ion-header>
+  <ion-content>
+    <ion-button expand="block" [routerLink]="['/home']" style="margin-bottom: 10px;">
+      Inicio
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/agregar']" style="margin-bottom: 10px;">
+      Agregar
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/materias']" style="margin-bottom: 10px;">
+      Materias
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/notas']" style="margin-bottom: 10px;">
+      Notas
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/materias-aceptar']" style="margin-bottom: 10px;">
+      Materias Inscritas
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/notas-aceptar']" style="margin-bottom: 10px;">
+      Notas Inscritas
+    </ion-button>
+  </ion-content>
 </ion-menu>
 
 <div id="main-content">
@@ -25,13 +40,13 @@
 <ion-content>
   <ion-card>
     <ion-card-content>
-      <form [formGroup]="materiaForm" (ngSubmit)="agregarMateria()">
-        <ion-input formControlName="nombre" placeholder="Nombre"></ion-input>
+      <form [formGroup]="materiasForm">
+        <ion-input formControlName="nombre" placeholder="Nombre de la materia"></ion-input>
         <ion-input formControlName="semestre" placeholder="Semestre"></ion-input>
         <ion-input formControlName="codigo" placeholder="Código"></ion-input>
         <ion-input formControlName="horario" placeholder="Horario"></ion-input>
         <ion-input formControlName="observaciones" placeholder="Observaciones"></ion-input>
-        <ion-button type="submit">Aceptar</ion-button>
+        <ion-button (click)="agregarMateria()">Aceptar</ion-button>
       </form>
     </ion-card-content>
   </ion-card>

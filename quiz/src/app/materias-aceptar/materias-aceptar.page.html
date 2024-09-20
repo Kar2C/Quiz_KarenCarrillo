@@ -1,14 +1,29 @@
 <ion-menu side="end" contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Materias Inscritas</ion-title>
+      <ion-title>Menú</ion-title>
     </ion-toolbar>
-    <ion-content>
-      <ion-button [routerLink]="['/home']">
-        Volver al inicio
-      </ion-button>
-    </ion-content>
   </ion-header>
+  <ion-content>
+    <ion-button expand="block" [routerLink]="['/home']" style="margin-bottom: 10px;">
+      Inicio
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/agregar']" style="margin-bottom: 10px;">
+      Agregar
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/materias']" style="margin-bottom: 10px;">
+      Materias
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/notas']" style="margin-bottom: 10px;">
+      Notas
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/materias-aceptar']" style="margin-bottom: 10px;">
+      Materias Inscritas
+    </ion-button>
+    <ion-button expand="block" [routerLink]="['/notas-aceptar']" style="margin-bottom: 10px;">
+      Notas Inscritas
+    </ion-button>
+  </ion-content>
 </ion-menu>
 
 <div id="main-content">
@@ -23,12 +38,10 @@
 </div>
 
 <ion-content>
-  <ion-card *ngFor="let materia of materias">
-    <ion-card-content>
-      <p>Semestre: {{ materia.semestre }}</p>
-      <p>Código: {{ materia.codigo }}</p>
-      <p>Horario: {{ materia.horario }}</p>
-      <p>Observaciones: {{ materia.observaciones }}</p>
-    </ion-card-content>
-  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let materia of materiasArray">
+      <ion-label>{{ materia.nombre }}</ion-label>
+      <ion-button (click)="verDetalle(materia)">Ver Detalle</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

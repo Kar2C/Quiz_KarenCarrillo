@@ -26,11 +26,10 @@
   </ion-content>
 </ion-menu>
 
-
 <div id="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Inicio</ion-title>
+      <ion-title>Modificar Materias</ion-title>
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -39,5 +38,31 @@
 </div>
 
 <ion-content>
-  <ion-button [routerLink]="['/agregar']">Agregar</ion-button>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="modificarMateriaForm">
+        <ion-item>
+          <ion-label position="floating">Nombre de la materia</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Semestre</ion-label>
+          <ion-input formControlName="semestre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Código</ion-label>
+          <ion-input formControlName="codigo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Horario</ion-label>
+          <ion-input formControlName="horario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Observaciones</ion-label>
+          <ion-input formControlName="observaciones"></ion-input>
+        </ion-item>
+        <ion-button (click)="guardarCambios()">Guardar Cambios</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

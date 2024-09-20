@@ -1,9 +1,6 @@
-/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
 
 import {
   IonContent,
@@ -16,7 +13,12 @@ import {
   IonCard,
   IonCardContent,
   IonInput,
-  IonMenu
+  IonMenu,
+  IonCardHeader,
+  IonCardTitle,
+  IonList,
+  IonItem,
+  IonLabel,
 } from '@ionic/angular/standalone';
 import { Materia } from '../models/materia';
 
@@ -31,7 +33,6 @@ import { Materia } from '../models/materia';
     IonTitle,
     IonToolbar,
     CommonModule,
-    FormsModule,
     IonButton,
     IonButtons,
     IonMenuButton,
@@ -39,16 +40,34 @@ import { Materia } from '../models/materia';
     IonCardContent,
     IonInput,
     IonMenu,
-    RouterModule
+    RouterModule,
+    IonCardHeader,
+    IonCardTitle,
+    IonList,
+    IonItem,
+    IonLabel,
   ],
 })
 
 export class MateriasAceptarPage implements OnInit {
-  materias: Materia[] = []; // Usa la interfaz Materia
+  materiasArray: Materia[] = [];
 
-  constructor(private materiasService: MateriasService) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.materias = this.materiasService.getMaterias();
+    this.cargarMaterias();
+  }
+
+  cargarMaterias() {
+    // Recuperar las materias del localStorage
+    const materiasGuardadas = localStorage.getItem('materias');
+    this.materiasArray = materiasGuardadas ? JSON.parse(materiasGuardadas) : [];
+  }
+
+  verDetalle(materia: Materia) {
+    // Guardar la materia seleccionada en localStorage para mostrar los detalles
+    localStorage.setItem('materiaSeleccionada', JSON.stringify(materia));
+    // Navegar a la página de detalle de la materia
+    this.router.navigate(['/detalle-materia']);
   }
 }

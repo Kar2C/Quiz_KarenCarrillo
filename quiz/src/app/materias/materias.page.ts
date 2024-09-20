@@ -1,8 +1,6 @@
-/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import {
   IonContent,
@@ -16,7 +14,10 @@ import {
   IonCard,
   IonCardContent,
   IonInput
+
 } from '@ionic/angular/standalone';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Materia } from '../models/materia';
 
 @Component({
   selector: 'app-materias',
@@ -29,8 +30,6 @@ import {
     IonTitle,
     IonToolbar,
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule, // Importar ReactiveFormsModule
     IonMenu,
     IonButton,
     RouterModule,
@@ -38,31 +37,49 @@ import {
     IonMenuButton,
     IonCard,
     IonCardContent,
-    IonInput
+    IonInput,
+    ReactiveFormsModule
   ],
 })
-export class MateriasPage implements OnInit {
-  materiaForm: FormGroup;
-  materias: any[] = []; // Array para almacenar las materias
 
-  constructor() {
-    // Inicializar FormGroup y FormControl con validadores
-    this.materiaForm = new FormGroup({
-      nombre: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      semestre: new FormControl('', [Validators.required]),
-      codigo: new FormControl('', [Validators.required]),
-      horario: new FormControl('', [Validators.required]),
-      observaciones: new FormControl('', [Validators.required])
+export class MateriasPage implements OnInit {
+
+  materiasForm!: FormGroup;
+  materiasArray: Materia[] = [];
+
+  constructor(private fb: FormBuilder, private router: Router) {}
+
+  ngOnInit() {
+    this.materiasForm = this.fb.group({
+      nombre: ['', Validators.required],
+      semestre: ['', Validators.required],
+      codigo: ['', Validators.required],
+      horario: ['', Validators.required],
+      observaciones: ['']
     });
+
+    // Cargar materias previamente guardadas del localStorage
+    const materiasGuardadas = localStorage.getItem('materias');
+    if (materiasGuardadas) {
+      this.materiasArray = JSON.parse(materiasGuardadas);
+    }
   }
 
-  ngOnInit() {}
-
   agregarMateria() {
-    if (this.materiaForm.valid) {
-      this.materias.push(this.materiaForm.value);
-      console.log(this.materias); // Verificar el array en la consola
-      this.materiaForm.reset(); // Limpiar el formulario después de agregar
+    if (this.materiasForm.valid) {
+      const nuevaMateria: Materia = this.materiasForm.value;
+      this.materiasArray.push(nuevaMateria);
+
+      // Guardar el array actualizado en localStorage
+      localStorage.setItem('materias', JSON.stringify(this.materiasArray));
+
+      // Guardar la nueva materia en localStorage para ser seleccionada automáticamente
+      localStorage.setItem('materiaSeleccionada', JSON.stringify(nuevaMateria));
+
+      // Navegar automáticamente a la página de aceptación de materias
+      this.router.navigate(['/materias-aceptar']);
+    } else {
+      console.log('Formulario inválido');
     }
   }
 }
