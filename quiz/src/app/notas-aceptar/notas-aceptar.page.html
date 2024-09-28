@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Agregar Notas</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="notaForm">
+        <ion-item>
+            <ion-label>Fecha de Entrega</ion-label>
+            <ion-datetime display-format="DD/MM/YYYY" (ionChange)="onFechaEntregaChange($event)"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Descripción</ion-label>
+            <ion-input formControlName="descripcion"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Nota</ion-label>
+            <ion-input formControlName="nota" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Observaciones</ion-label>
+            <ion-input formControlName="observaciones"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Seleccione el Corte en el cual desea ingresar su nota</ion-label>
+            <ion-input formControlName="corte" (ionInput)="filterOptions($event)"></ion-input>
+        </ion-item>
+
+        <ion-list *ngIf="filteredCortes.length > 0">
+            <ion-item *ngFor="let corte of filteredCortes" (click)="selectCorte(corte)">
+                {{ corte }}
+            </ion-item>
+        </ion-list>
+
+        <ion-button expand="full" color="success" (click)="guardarNota()">Aceptar</ion-button>
+        <ion-button expand="full" (click)="verNotas()">Ver Notas Registradas</ion-button>
+        <ion-button expand="full" (click)="DetalleMateria()">Volver al detalle por materia</ion-button>
+
+    </form>
+</ion-content>

@@ -1,0 +1,35 @@
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Detalles por materia</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content>
+  <ion-card *ngIf="materiaSeleccionada">
+    <ion-card-header>
+      <ion-card-title>{{ materiaSeleccionada.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Semestre:</strong> {{ materiaSeleccionada.semestre }}</p>
+      <p><strong>Código:</strong> {{ materiaSeleccionada.codigo }}</p>
+      <p><strong>Horario:</strong> {{ materiaSeleccionada.horario }}</p>
+      <p><strong>Observaciones:</strong> {{ materiaSeleccionada.observaciones || 'No hay ninguna observación' }}</p>
+      
+      <p><strong>Promedio:</strong> <span [style.color]="colorMensaje">{{ promedio.toFixed(2) }}</span></p>
+      <p [style.color]="colorMensaje">{{ mensaje }}</p>
+    </ion-card-content>
+
+    <ion-button (click)="modificarMateria()">Modificar Materia</ion-button>
+    <ion-button (click)="ListaMaterias()">Volver a la lista de materias</ion-button>
+    <ion-button (click)="agregarNotas()">Agregar Notas</ion-button>
+    <ion-button (click)="ListaNotas()">Ver lista de notas registradas</ion-button>
+    <ion-button color="danger" (click)="confirmarEliminacion()">Eliminar Materia</ion-button>
+
+
+  </ion-card>
+</ion-content>

@@ -1,0 +1,32 @@
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Materias Inscritas</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let materia of materiasArray">
+      <ion-label>
+        {{ materia.nombre }}
+        <span [ngStyle]="{
+            'color': obtenerColorMensaje(materia),
+            'margin-left': '25px'
+          }">
+          {{ obtenerEstadoMateria(materia) }}
+        </span>
+      </ion-label>
+      <ion-button (click)="verDetalle(materia)">Ver Detalle</ion-button>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-button (click)="AgregarMateria()">Agregar Materia</ion-button>
+
+
+</ion-content>

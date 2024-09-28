@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notas Registradas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="notas.length > 0">
+  <ion-card *ngFor="let nota of notas">
+    <ion-card-header>
+      <ion-card-title>{{ nota.descripcion }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Fecha de Entrega:</strong> {{ nota.fechaEntrega }}</p>
+      <p><strong>Nota:</strong> {{ nota.nota }}</p>
+      <p><strong>Observaciones:</strong> {{ nota.observaciones || 'No hay observaciones' }}</p>
+      <p><strong>Corte:</strong> {{ nota.corte }}</p>
+      <ion-button (click)="modificarNota(nota)">Modificar</ion-button>
+      <ion-button (click)="VolverANota()">Volver al detalle de la materia</ion-button>
+
+      <ion-button color="danger" (click)="confirmarEliminacion(nota)">Eliminar</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-content *ngIf="notas.length === 0">
+  <p>No hay notas registradas.</p>
+
+</ion-content>

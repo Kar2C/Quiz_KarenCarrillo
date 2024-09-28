@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalle de la Nota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content *ngIf="notas.length > 0">
+      <div *ngFor="let nota of notas">
+        <h2>Fecha de Entrega: {{ nota.fechaEntrega }}</h2>
+        <p><strong>Descripción:</strong> {{ nota.descripcion }}</p>
+        <p><strong>Nota:</strong> {{ nota.nota }}</p>
+        <p *ngIf="nota.observaciones"><strong>Observaciones:</strong> {{ nota.observaciones }}</p>
+        <ion-button (click)="modificarMateria(nota)">Modificar</ion-button>
+      </div>
+    </ion-card-content>
+    <ion-card-content *ngIf="notas.length === 0">
+      <p>No hay notas para esta materia.</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

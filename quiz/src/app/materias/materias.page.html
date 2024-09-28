@@ -1,0 +1,27 @@
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Materias</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="materiasForm">
+        <ion-input formControlName="nombre" placeholder="Nombre de la materia"></ion-input>
+        <ion-input formControlName="semestre" placeholder="Semestre"></ion-input>
+        <ion-input formControlName="codigo" placeholder="Código"></ion-input>
+        <ion-input formControlName="horario" placeholder="Horario"></ion-input>
+        <ion-input formControlName="observaciones" placeholder="Observaciones"></ion-input>
+        <ion-button color="success" (click)="agregarMateria()">Aceptar</ion-button>
+        <ion-button (click)="ListaMaterias()">Ver lista de materias</ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
