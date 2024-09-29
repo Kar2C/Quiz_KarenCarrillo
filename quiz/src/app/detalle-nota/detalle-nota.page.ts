@@ -11,7 +11,11 @@ import {
   IonToolbar,
   IonCard,
   IonCardContent,
-  IonButton
+  IonButton,
+  IonButtons,
+  IonMenuButton,
+  IonList,
+  IonMenu
 } from '@ionic/angular/standalone';
 import { Nota } from '../models/nota';
 
@@ -30,7 +34,11 @@ import { Nota } from '../models/nota';
     IonCard,
     IonCardContent,
     IonButton,
-    RouterModule
+    RouterModule,
+    IonButtons,
+    IonMenuButton,
+    IonList,
+    IonMenu
   ],
 })
 export class DetalleNotaPage implements OnInit {

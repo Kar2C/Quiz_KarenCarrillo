@@ -1,4 +1,28 @@
-<ion-content>
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Inicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-menu side="end" menuId="first" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modificar Nota</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-button routerLink="/home">Inicio</ion-button>
+        <ion-button routerLink="/materias">Materias</ion-button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-content id="main-content">
     <ion-card>
         <ion-card-content>
             <form [formGroup]="modificarNotaForm">

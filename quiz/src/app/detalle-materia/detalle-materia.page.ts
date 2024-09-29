@@ -16,6 +16,7 @@ import {
   IonButtons,
   IonMenuButton,
   AlertController,
+  IonList
 } from '@ionic/angular/standalone';
 import { Materia } from '../models/materia';
 import { Nota } from '../models/nota';
@@ -41,6 +42,7 @@ import { Nota } from '../models/nota';
     RouterModule,
     IonButtons,
     IonMenuButton,
+    IonList
   ],
 })
 
@@ -62,6 +64,11 @@ export class DetalleMateriaPage implements OnInit {
     } else {
       console.error('No se encontró materia seleccionada en el localStorage');
     }
+  }
+
+  ionViewWillEnter(){
+    this.cargarNotas();
+    this.calcularPromedio();
   }
 
   cargarNotas() {

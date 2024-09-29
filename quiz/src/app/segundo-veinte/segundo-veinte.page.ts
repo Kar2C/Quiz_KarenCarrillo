@@ -15,6 +15,10 @@ import {
   IonCardTitle,
   IonAlert,
   AlertController,
+  IonButtons,
+  IonMenuButton,
+  IonList,
+  IonMenu,
 } from '@ionic/angular/standalone';
 import { Nota } from '../models/nota';
 import { Materia } from '../models/materia';
@@ -40,6 +44,10 @@ import { Router } from '@angular/router';
     IonCardTitle,
     RouterModule,
     IonAlert,
+    IonButtons,
+    IonMenuButton,
+    IonList,
+    IonMenu,
   ],
 })
 export class SegundoVeintePage implements OnInit {
@@ -121,16 +129,15 @@ export class SegundoVeintePage implements OnInit {
     this.router.navigate(['/uno']);
   }
 
-  irASegundoVeinte(){
+  irASegundoVeinte() {
     this.router.navigate(['/dos']);
   }
 
-  irATercerVeinte(){
+  irATercerVeinte() {
     this.router.navigate(['/tres']);
   }
 
-  irACuarenta(){
+  irACuarenta() {
     this.router.navigate(['/cuatro']);
-
   }
 }

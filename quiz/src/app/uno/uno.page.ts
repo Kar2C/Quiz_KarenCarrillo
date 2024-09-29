@@ -12,6 +12,10 @@ import {
   IonCardTitle,
   IonButton,
   AlertController,
+  IonButtons,
+  IonMenuButton,
+  IonList,
+  IonMenu,
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { Nota } from '../models/nota';
@@ -34,9 +38,12 @@ import { Materia } from '../models/materia';
     IonCardContent,
     IonCardTitle,
     IonButton,
+    IonButtons,
+    IonMenuButton,
+    IonList,
+    IonMenu,
   ],
 })
-
 export class UnoPage implements OnInit {
   notas: Nota[] = [];
   notasPrimerCorte: Nota[] = [];
@@ -44,7 +51,10 @@ export class UnoPage implements OnInit {
   promedioConMultiplicacion: number = 0;
   colorPromedio: string = '';
 
-  constructor(private router: Router, private alertController: AlertController) {}
+  constructor(
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
     this.cargarNotas();
@@ -58,7 +68,9 @@ export class UnoPage implements OnInit {
       const notasGuardadas = localStorage.getItem(`notas_${materia.codigo}`);
       if (notasGuardadas) {
         this.notas = JSON.parse(notasGuardadas);
-        this.notasPrimerCorte = this.notas.filter(nota => nota.corte === '- Primer Corte');
+        this.notasPrimerCorte = this.notas.filter(
+          (nota) => nota.corte === '- Primer Corte'
+        );
       }
     }
   }
@@ -71,7 +83,10 @@ export class UnoPage implements OnInit {
       return;
     }
 
-    const sumaNotas = this.notasPrimerCorte.reduce((total, nota) => total + nota.nota, 0);
+    const sumaNotas = this.notasPrimerCorte.reduce(
+      (total, nota) => total + nota.nota,
+      0
+    );
     this.promedioSinMultiplicar = sumaNotas / this.notasPrimerCorte.length;
     this.promedioConMultiplicacion = this.promedioSinMultiplicar * 0.2;
 
@@ -103,9 +118,14 @@ export class UnoPage implements OnInit {
   }
 
   eliminarNotas() {
-    this.notas = this.notas.filter(nota => nota.corte !== '- Primer Corte');
+    this.notas = this.notas.filter((nota) => nota.corte !== '- Primer Corte');
     this.notasPrimerCorte = []; // Actualizar la lista de notas del primer corte
-    localStorage.setItem(`notas_${JSON.parse(localStorage.getItem('materiaSeleccionada')!).codigo}`, JSON.stringify(this.notas)); // Guardar cambios en localStorage
+    localStorage.setItem(
+      `notas_${
+        JSON.parse(localStorage.getItem('materiaSeleccionada')!).codigo
+      }`,
+      JSON.stringify(this.notas)
+    ); // Guardar cambios en localStorage
     this.calcularPromedios(); // Recalcular promedios después de eliminar
     console.log('Todas las notas del primer corte han sido eliminadas.');
   }

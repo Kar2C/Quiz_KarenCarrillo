@@ -12,6 +12,10 @@ import {
   IonCardTitle,
   IonButton,
   AlertController,
+  IonButtons,
+  IonMenuButton,
+  IonList,
+  IonMenu,
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { Nota } from '../models/nota';
@@ -34,6 +38,10 @@ import { Materia } from '../models/materia';
     IonCardContent,
     IonCardTitle,
     IonButton,
+    IonButtons,
+    IonMenuButton,
+    IonList,
+    IonMenu,
   ],
 })
 export class DosPage implements OnInit {
@@ -43,7 +51,10 @@ export class DosPage implements OnInit {
   promedioConMultiplicacion: number = 0;
   colorPromedio: string = '';
 
-  constructor(private router: Router, private alertController: AlertController) {}
+  constructor(
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
     this.cargarNotas();
@@ -57,7 +68,9 @@ export class DosPage implements OnInit {
       const notasGuardadas = localStorage.getItem(`notas_${materia.codigo}`);
       if (notasGuardadas) {
         this.notas = JSON.parse(notasGuardadas);
-        this.notasSegundoCorte = this.notas.filter(nota => nota.corte === '- Segundo Corte');
+        this.notasSegundoCorte = this.notas.filter(
+          (nota) => nota.corte === '- Segundo Corte'
+        );
       }
     }
   }
@@ -70,7 +83,10 @@ export class DosPage implements OnInit {
       return;
     }
 
-    const sumaNotas = this.notasSegundoCorte.reduce((total, nota) => total + nota.nota, 0);
+    const sumaNotas = this.notasSegundoCorte.reduce(
+      (total, nota) => total + nota.nota,
+      0
+    );
     this.promedioSinMultiplicar = sumaNotas / this.notasSegundoCorte.length;
     this.promedioConMultiplicacion = this.promedioSinMultiplicar * 0.2;
 
@@ -102,10 +118,15 @@ export class DosPage implements OnInit {
   }
 
   eliminarNotas() {
-    this.notas = this.notas.filter(nota => nota.corte !== '- Segundo Corte');
-    this.notasSegundoCorte = []; 
-    localStorage.setItem(`notas_${JSON.parse(localStorage.getItem('materiaSeleccionada')!).codigo}`, JSON.stringify(this.notas)); // Guardar cambios en localStorage
-    this.calcularPromedios(); 
+    this.notas = this.notas.filter((nota) => nota.corte !== '- Segundo Corte');
+    this.notasSegundoCorte = [];
+    localStorage.setItem(
+      `notas_${
+        JSON.parse(localStorage.getItem('materiaSeleccionada')!).codigo
+      }`,
+      JSON.stringify(this.notas)
+    ); // Guardar cambios en localStorage
+    this.calcularPromedios();
     console.log('Todas las notas del segundo corte han sido eliminadas.');
   }
 

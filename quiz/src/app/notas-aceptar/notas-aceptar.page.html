@@ -1,10 +1,28 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Agregar Notas</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Agregar Nota</ion-title>
     </ion-toolbar>
-</ion-header>
-
-<ion-content>
+  </ion-header>
+  
+  <ion-menu side="end" menuId="first" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-button routerLink="/home">Inicio</ion-button>
+        <ion-button routerLink="/materias">Materias</ion-button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-content id="main-content">
     <form [formGroup]="notaForm">
         <ion-item>
             <ion-label>Fecha de Entrega</ion-label>

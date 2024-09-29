@@ -9,6 +9,8 @@ import {
   IonButtons,
   IonMenuButton,
   IonButton,
+  IonList,
+  IonItem,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -25,7 +27,9 @@ import {
     IonButtons,
     IonMenuButton,
     IonButton,
-    RouterModule
+    RouterModule,
+    IonList,
+    IonItem,
   ],
 })
 export class HomePage {

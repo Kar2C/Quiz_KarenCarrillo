@@ -1,10 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Detalle de la Nota</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-menu side="end" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Materias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-button routerLink="/home">Inicio</ion-button>
+      <ion-button routerLink="/materias">Materias</ion-button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content">
   <ion-card>
     <ion-card-content *ngIf="notas.length > 0">
       <div *ngFor="let nota of notas">

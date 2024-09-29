@@ -12,6 +12,10 @@ import {
   IonCardTitle,
   IonButton,
   AlertController,
+  IonButtons,
+  IonMenuButton,
+  IonMenu,
+  IonList,
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { Materia } from '../models/materia';
@@ -34,6 +38,10 @@ import { Nota } from '../models/nota';
     IonCardContent,
     IonCardTitle,
     IonButton,
+    IonButtons,
+    IonMenuButton,
+    IonMenu,
+    IonList,
   ],
 })
 export class CuatroPage implements OnInit {
@@ -80,7 +88,7 @@ export class CuatroPage implements OnInit {
       0
     );
     this.promedioSinMultiplicar = sumaNotas / this.notasCuarto.length;
-    this.promedioConMultiplicacion = this.promedioSinMultiplicar * 0.2;
+    this.promedioConMultiplicacion = this.promedioSinMultiplicar * 0.4;
 
     this.colorPromedio = this.promedioSinMultiplicar >= 3.0 ? 'green' : 'red';
   }

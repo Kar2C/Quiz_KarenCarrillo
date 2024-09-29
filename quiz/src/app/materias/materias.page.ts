@@ -13,7 +13,8 @@ import {
   IonMenuButton,
   IonCard,
   IonCardContent,
-  IonInput
+  IonInput,
+  IonList
 
 } from '@ionic/angular/standalone';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +39,8 @@ import { Materia } from '../models/materia';
     IonCard,
     IonCardContent,
     IonInput,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonList
   ],
 })
 
@@ -58,7 +60,6 @@ export class MateriasPage implements OnInit {
       observaciones: ['']
     });
 
-    // Cargar materias previamente guardadas del localStorage
     const materiasGuardadas = localStorage.getItem('materias');
     if (materiasGuardadas) {
       this.materiasArray = JSON.parse(materiasGuardadas);
@@ -76,7 +77,6 @@ export class MateriasPage implements OnInit {
       // Guardar la nueva materia en localStorage para ser seleccionada automáticamente
       localStorage.setItem('materiaSeleccionada', JSON.stringify(nuevaMateria));
 
-      // Navegar automáticamente a la página de aceptación de materias
       this.router.navigate(['/materias-aceptar']);
     } else {
       console.log('Formulario inválido');
@@ -84,6 +84,5 @@ export class MateriasPage implements OnInit {
   }
   ListaMaterias(){
     this.router.navigate(['/materias-aceptar']);
-
   }
 }

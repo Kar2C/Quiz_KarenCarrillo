@@ -1,10 +1,28 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Notas del Primer Corte</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-menu side="end" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-button routerLink="/home">Inicio</ion-button>
+      <ion-button routerLink="/materias">Materias</ion-button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content">
   <h2>Estas son las notas registradas del primer corte:</h2>
   <ion-card *ngFor="let nota of notasPrimerCorte">
     <ion-card-header>

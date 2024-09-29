@@ -14,7 +14,10 @@ import {
   IonButton, 
   IonInput, 
   IonList,
-  IonDatetime
+  IonDatetime,
+  IonButtons,
+  IonMenuButton,
+  IonMenu
 } from '@ionic/angular/standalone';
 import { Nota } from '../models/nota';
 
@@ -39,7 +42,10 @@ import { Nota } from '../models/nota';
     RouterModule,
     IonInput,
     IonList,
-    IonDatetime
+    IonDatetime,
+    IonButtons,
+    IonMenuButton,
+    IonMenu
   ],
 })
 
@@ -106,7 +112,6 @@ export class ModificarNotaPage implements OnInit {
         }
       }
 
-      // Redirigir a la página donde se muestran las notas
       this.router.navigate(['/segundo-veinte']);
     }
   }

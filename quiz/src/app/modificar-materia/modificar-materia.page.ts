@@ -22,6 +22,7 @@ import {
   IonInput,
   IonLabel,
   IonItem,
+  IonList
 } from '@ionic/angular/standalone';
 import { Materia } from '../models/materia';
 
@@ -48,6 +49,7 @@ import { Materia } from '../models/materia';
     IonInput,
     IonLabel,
     IonItem,
+    IonList
   ],
 })
 export class ModificarMateriaPage implements OnInit {

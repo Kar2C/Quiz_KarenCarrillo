@@ -12,6 +12,10 @@ import {
   IonCardTitle,
   IonButton,
   AlertController,
+  IonButtons,
+  IonMenuButton,
+  IonList,
+  IonMenu,
 } from '@ionic/angular/standalone';
 import { Nota } from '../models/nota';
 import { Router } from '@angular/router';
@@ -34,6 +38,10 @@ import { Materia } from '../models/materia';
     IonCardContent,
     IonCardTitle,
     IonButton,
+    IonButtons,
+    IonMenuButton,
+    IonList,
+    IonMenu,
   ],
 })
 export class TresPage implements OnInit {
