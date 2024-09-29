@@ -59,4 +59,8 @@ export const routes: Routes = [
     path: 'cuatro',
     loadComponent: () => import('./cuatro/cuatro.page').then( m => m.CuatroPage)
   },
+  {
+    path: 'menu',
+    loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage)
+  },
 ];
