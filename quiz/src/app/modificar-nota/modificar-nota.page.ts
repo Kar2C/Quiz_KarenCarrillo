@@ -46,7 +46,7 @@ import { Nota } from '../models/nota';
 export class ModificarNotaPage implements OnInit {
   modificarNotaForm!: FormGroup;
   notaActual!: Nota;
-  cortes: string[] = ['Primer Corte', 'Segundo Corte', 'Tercer Corte', 'Cuarto Corte'];
+  cortes: string[] = ['-Primer Corte', '-Segundo Corte', '-Tercer Corte', '-Cuarto Corte'];
   filteredCortes: string[] = [];
 
   constructor(private fb: FormBuilder, private router: Router) {}

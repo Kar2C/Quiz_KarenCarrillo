@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notas del Primer Corte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Estas son las notas registradas del primer corte:</h2>
+  <ion-card *ngFor="let nota of notasPrimerCorte">
+    <ion-card-header>
+      <ion-card-title>{{ nota.descripcion }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Fecha de Entrega:</strong> {{ nota.fechaEntrega }}</p>
+      <p><strong>Nota:</strong> {{ nota.nota }}</p>
+      <p><strong>Observaciones:</strong> {{ nota.observaciones || 'No hay observaciones' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <p>
+    <strong>Tu promedio (Sin multiplicar por el 20%) es de:</strong>
+    <span [style.color]="colorPromedio">{{ promedioSinMultiplicar.toFixed(2) }}</span>
+  </p>
+  <p>
+    <strong>Tu promedio (Multiplicado por el 20%) es de:</strong>
+    <span [style.color]="colorPromedio">{{ promedioConMultiplicacion.toFixed(2) }}</span>
+  </p>
+
+  <ion-button (click)="confirmarEliminacionTodas()">Eliminar todas las notas de este corte</ion-button>
+  <ion-button (click)="VolverANota()">Volver a las notas</ion-button>
+</ion-content>

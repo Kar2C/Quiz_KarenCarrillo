@@ -59,6 +59,10 @@ export class MateriasAceptarPage implements OnInit {
     this.cargarMaterias();
   }
 
+  ionViewWillEnter(){
+    this.cargarMaterias();
+  }
+
   cargarMaterias() {
     const materiasGuardadas = localStorage.getItem('materias');
     this.materiasArray = materiasGuardadas ? JSON.parse(materiasGuardadas) : [];

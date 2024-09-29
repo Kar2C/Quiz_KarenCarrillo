@@ -116,4 +116,21 @@ export class SegundoVeintePage implements OnInit {
   VolverANota() {
     this.router.navigate(['/detalle-materia']);
   }
+
+  irAPrimerVeinte() {
+    this.router.navigate(['/uno']);
+  }
+
+  irASegundoVeinte(){
+    this.router.navigate(['/dos']);
+  }
+
+  irATercerVeinte(){
+    this.router.navigate(['/tres']);
+  }
+
+  irACuarenta(){
+    this.router.navigate(['/cuatro']);
+
+  }
 }

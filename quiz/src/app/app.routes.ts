@@ -43,4 +43,20 @@ export const routes: Routes = [
     path: 'modificar-nota',
     loadComponent: () => import('./modificar-nota/modificar-nota.page').then( m => m.ModificarNotaPage)
   },
+  {
+    path: 'uno',
+    loadComponent: () => import('./uno/uno.page').then( m => m.UnoPage)
+  },
+  {
+    path: 'dos',
+    loadComponent: () => import('./dos/dos.page').then( m => m.DosPage)
+  },
+  {
+    path: 'tres',
+    loadComponent: () => import('./tres/tres.page').then( m => m.TresPage)
+  },
+  {
+    path: 'cuatro',
+    loadComponent: () => import('./cuatro/cuatro.page').then( m => m.CuatroPage)
+  },
 ];

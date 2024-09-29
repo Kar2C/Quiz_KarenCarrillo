@@ -15,15 +15,22 @@
       <p><strong>Observaciones:</strong> {{ nota.observaciones || 'No hay observaciones' }}</p>
       <p><strong>Corte:</strong> {{ nota.corte }}</p>
       <ion-button (click)="modificarNota(nota)">Modificar</ion-button>
-      <ion-button (click)="VolverANota()">Volver al detalle de la materia</ion-button>
-
       <ion-button color="danger" (click)="confirmarEliminacion(nota)">Eliminar</ion-button>
-
     </ion-card-content>
   </ion-card>
+
+
+  <ion-button (click)="VolverANota()">Volver al detalle de la materia</ion-button>
+  <h3>Aca puedes ver las notas registradas por cada corte corte:</h3>
+  <ion-button expand="full" (click)="irAPrimerVeinte()">Primer Corte</ion-button>
+  <ion-button expand="full" (click)="irASegundoVeinte()">Segundo Corte</ion-button>
+  <ion-button expand="full" (click)="irATercerVeinte()">Tercer Corte</ion-button>
+  <ion-button expand="full" (click)="irACuarenta()">Cuarto Corte</ion-button>
+
+
 </ion-content>
 
 <ion-content *ngIf="notas.length === 0">
   <p>No hay notas registradas.</p>
-
+  <ion-button (click)="VolverANota()">Volver al detalle de la materia</ion-button>
 </ion-content>

@@ -129,7 +129,7 @@ export class NotasAceptarPage implements OnInit {
       );
       alert('Nota guardada con éxito');
     } else {
-      alert('Por favor, complete todos los campos obligatorios');
+      alert('Por favor, complete todos los campos obligatorios o revise que todos los datos sean correctos');
     }
   }
 
